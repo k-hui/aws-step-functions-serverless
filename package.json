@@ -1,0 +1,25 @@
+{
+  "name": "aws-step-functions-serverless",
+  "version": "1.0.0",
+  "description": "AWS Step Functions by Serverless Framework",
+  "scripts": {
+    "start": "sls offline",
+    "test": "sls invoke local -f hello",
+    "deploy": "sls deploy -s dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k-hui/aws-step-functions-serverless.git"
+  },
+  "author": "Key Hui",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/k-hui/aws-step-functions-serverless/issues"
+  },
+  "homepage": "https://github.com/k-hui/aws-step-functions-serverless#readme",
+  "devDependencies": {
+    "serverless": "^3.26.0",
+    "serverless-offline": "^12.0.4",
+    "serverless-step-functions": "^3.12.1"
+  }
+}
