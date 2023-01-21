@@ -6,6 +6,7 @@
     "start": "sls offline",
     "test": "sls invoke local -f hello && sls invoke local -f world",
     "test:dev": "sls invoke -f hello && sls invoke -f world",
+    "test:stepf": "sls invoke stepf --name serverlessDemo",
     "deploy": "sls deploy -s dev",
     "remove": "sls remove"
   },

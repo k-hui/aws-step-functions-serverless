@@ -36,21 +36,27 @@ plugins:
 npm install
 ```
 
-- Test offline
+### Test offline
 
 ```bash
 npm start
 npm test
 ```
 
-- Test on dev
+### Test on dev
 
 ```bash
 npm test:dev
 ```
 
-### Deployment
+## Deployment
 
 ```bash
 npm run deploy
+```
+
+### Test Step Functions on dev
+
+```bash
+npm test:stepf
 ```
