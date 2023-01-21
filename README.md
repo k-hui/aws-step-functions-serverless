@@ -44,6 +44,8 @@ npm test
 
 ### Deployment
 
+- deploy as dev stage
+
 ```bash
-npm deploy
+npm run deploy:dev
 ```

@@ -5,7 +5,7 @@
   "scripts": {
     "start": "sls offline",
     "test": "sls invoke local -f hello",
-    "deploy": "sls deploy -s dev"
+    "deploy:dev": "sls deploy -s dev"
   },
   "repository": {
     "type": "git",
