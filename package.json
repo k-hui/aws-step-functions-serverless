@@ -4,8 +4,10 @@
   "description": "AWS Step Functions by Serverless Framework",
   "scripts": {
     "start": "sls offline",
-    "test": "sls invoke local -f hello",
-    "deploy:dev": "sls deploy -s dev"
+    "test": "sls invoke local -f hello && sls invoke local -f world",
+    "test:dev": "sls invoke -f hello && sls invoke -f world",
+    "deploy": "sls deploy -s dev",
+    "remove": "sls remove"
   },
   "repository": {
     "type": "git",

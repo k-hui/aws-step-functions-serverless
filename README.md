@@ -13,6 +13,7 @@ npm install -D serverless-step-functions
 
 ### Setup Python Serverless Project
 
+- https://www.serverless.com/framework/docs/getting-started
 - https://www.serverless.com/plugins/serverless-offline
 - https://www.serverless.com/plugins/serverless-step-functions
 
@@ -42,10 +43,14 @@ npm start
 npm test
 ```
 
-### Deployment
-
-- deploy as dev stage
+- Test on dev
 
 ```bash
-npm run deploy:dev
+npm test:dev
+```
+
+### Deployment
+
+```bash
+npm run deploy
 ```

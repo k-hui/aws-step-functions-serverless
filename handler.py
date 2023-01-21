@@ -3,8 +3,17 @@ import json
 
 def hello(event, context):
     body = {
-        "message": "Go Serverless v3.0! Your function executed successfully!",
+        "message": "Hello",
         "input": event,
     }
 
-    return {"statusCode": 200, "body": json.dumps(body)}
+    return {"code": 200, "body": json.dumps(body)}
+
+
+def world(event, context):
+    body = {
+        "message": "World",
+        "input": event,
+    }
+
+    return {"code": 200, "body": json.dumps(body)}
