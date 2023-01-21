@@ -6,7 +6,7 @@ AWS Step Functions by Serverless Framework
 
 ```bash
 npm init
-npm install -D serverless
+npm install -g serverless
 npm install -D serverless-offline
 npm install -D serverless-step-functions
 ```
@@ -22,12 +22,14 @@ serverless # select Python Starter
 ```
 
 - Then copy `handler.py` and `serverless.yml` to the root project
+- Delete the temporary created serverless project
 
 - append to `serverless.yml`
 
 ```yml
 plugins:
   - serverless-offline
+  - serverless-step-functions
 ```
 
 ## Getting Started
@@ -39,24 +41,24 @@ npm install
 ### Test offline
 
 ```bash
-npm start
-npm test
+sls offline
+sls invoke local -f hello && sls invoke local -f world
 ```
 
 ### Test on dev
 
 ```bash
-npm test:dev
+sls invoke -f hello && sls invoke -f world
 ```
 
 ## Deployment
 
 ```bash
-npm run deploy
+sls deploy -s dev
 ```
 
 ### Test Step Functions on dev
 
 ```bash
-npm test:stepf
+sls invoke stepf --name serverlessDemo
 ```
