@@ -32,7 +32,7 @@ stepFunctions:
             Next: WaitUsingSeconds
           WaitUsingSeconds:
             Type: Wait
-            Seconds: 120
+            Seconds: 10
             Next: FinalState
           FinalState:
             Type: Task
