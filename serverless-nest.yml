@@ -10,6 +10,9 @@ provider:
   profile: ${env:PROFILE} # Read env variable
   memorySize: 128
 
+custom:
+  stateMachineArn: ${env:STATE_MACHINE_ARN}
+
 stepFunctions:
   stateMachines:
     nestDemo:
@@ -25,29 +28,26 @@ stepFunctions:
         States:
           FirstState:
             Type: Task
-            Resource: arn:aws:states:::states:StartExecution
+            Resource: arn:aws:states:::states:startExecution.sync
             Parameters:
-              StateMachineArn: ${env:STATE_MACHINE_ARN}
+              StateMachineArn: ${self:custom.stateMachineArn}
               Input:
-                NeedCallback: true
                 AWS_STEP_FUNCTIONS_STARTED_BY_EXECUTION_ID.$: $$.Execution.Id
             Next: SecondState
           SecondState:
             Type: Task
-            Resource: arn:aws:states:::states:StartExecution
+            Resource: arn:aws:states:::states:startExecution.sync
             Parameters:
-              StateMachineArn: ${env:STATE_MACHINE_ARN}
+              StateMachineArn: ${self:custom.stateMachineArn}
               Input:
-                NeedCallback: true
                 AWS_STEP_FUNCTIONS_STARTED_BY_EXECUTION_ID.$: $$.Execution.Id
             Next: FinalState
           FinalState:
             Type: Task
-            Resource: arn:aws:states:::states:StartExecution
+            Resource: arn:aws:states:::states:startExecution.sync
             Parameters:
-              StateMachineArn: ${env:STATE_MACHINE_ARN}
+              StateMachineArn: ${self:custom.stateMachineArn}
               Input:
-                NeedCallback: true
                 AWS_STEP_FUNCTIONS_STARTED_BY_EXECUTION_ID.$: $$.Execution.Id
             End: true
 

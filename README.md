@@ -28,7 +28,7 @@ sls invoke -f hello && sls invoke -f world
 ## Deployment
 
 ```bash
-sls deploy -s dev
+npm run deploy
 ```
 
 ### Test Step Functions on dev
