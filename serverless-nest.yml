@@ -1,0 +1,55 @@
+service: serverless-aws-step-functions-nest
+
+frameworkVersion: "3"
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: us-east-1
+  profile: ${env:PROFILE} # Read env variable
+  memorySize: 128
+
+stepFunctions:
+  stateMachines:
+    nestDemo:
+      name: nestDemo
+      events:
+        - http:
+            path: action/start
+            method: POST
+            cors: true
+      definition:
+        Comment: "An example of nest workflow"
+        StartAt: FirstState
+        States:
+          FirstState:
+            Type: Task
+            Resource: arn:aws:states:::states:StartExecution
+            Parameters:
+              StateMachineArn: ${env:STATE_MACHINE_ARN}
+              Input:
+                NeedCallback: true
+                AWS_STEP_FUNCTIONS_STARTED_BY_EXECUTION_ID.$: $$.Execution.Id
+            Next: SecondState
+          SecondState:
+            Type: Task
+            Resource: arn:aws:states:::states:StartExecution
+            Parameters:
+              StateMachineArn: ${env:STATE_MACHINE_ARN}
+              Input:
+                NeedCallback: true
+                AWS_STEP_FUNCTIONS_STARTED_BY_EXECUTION_ID.$: $$.Execution.Id
+            Next: FinalState
+          FinalState:
+            Type: Task
+            Resource: arn:aws:states:::states:StartExecution
+            Parameters:
+              StateMachineArn: ${env:STATE_MACHINE_ARN}
+              Input:
+                NeedCallback: true
+                AWS_STEP_FUNCTIONS_STARTED_BY_EXECUTION_ID.$: $$.Execution.Id
+            End: true
+
+plugins:
+  - serverless-step-functions
